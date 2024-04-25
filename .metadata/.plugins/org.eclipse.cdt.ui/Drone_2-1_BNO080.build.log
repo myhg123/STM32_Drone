@@ -1,0 +1,10 @@
+17:02:24 **** Build of configuration Debug for project Drone_2-1_BNO080 ****
+make -j16 all 
+arm-none-eabi-size  Drone_2-1_BNO080.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28380	    116	   2268	  30764	   782c	Drone_2-1_BNO080.elf
+Finished building: default.size.stdout
+ 
+
+17:02:25 Build Finished. 0 errors, 0 warnings. (took 436ms)
+

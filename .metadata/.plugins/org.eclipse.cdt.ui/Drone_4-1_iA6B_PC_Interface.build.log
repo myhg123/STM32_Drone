@@ -1,0 +1,10 @@
+16:41:20 **** Incremental Build of configuration Debug for project Drone_4-1_iA6B_PC_Interface ****
+make -j16 all 
+arm-none-eabi-size  Drone_4-1_iA6B_PC_Interface.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26992	    112	   2376	  29480	   7328	Drone_4-1_iA6B_PC_Interface.elf
+Finished building: default.size.stdout
+ 
+
+16:41:21 Build Finished. 0 errors, 0 warnings. (took 370ms)
+

@@ -1,0 +1,10 @@
+21:57:15 **** Build of configuration Debug for project Drone_3-2_M8N_Setting_Message ****
+make -j16 all 
+arm-none-eabi-size  Drone_3-2_M8N_Setting_Message.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26028	    112	   2264	  28404	   6ef4	Drone_3-2_M8N_Setting_Message.elf
+Finished building: default.size.stdout
+ 
+
+21:57:16 Build Finished. 0 errors, 0 warnings. (took 929ms)
+

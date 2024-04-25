@@ -1,0 +1,10 @@
+21:14:47 **** Incremental Build of configuration Debug for project Drone_6-4_ESC_calibration_Mode ****
+make -j16 all 
+arm-none-eabi-size  Drone_6-4_ESC_calibration_Mode.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30380	    112	   2512	  33004	   80ec	Drone_6-4_ESC_calibration_Mode.elf
+Finished building: default.size.stdout
+ 
+
+21:14:47 Build Finished. 0 errors, 0 warnings. (took 426ms)
+

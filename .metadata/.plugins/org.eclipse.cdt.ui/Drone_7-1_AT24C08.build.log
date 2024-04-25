@@ -1,0 +1,10 @@
+20:11:29 **** Incremental Build of configuration Debug for project Drone_7-1_AT24C08 ****
+make -j16 all 
+arm-none-eabi-size  Drone_7-1_AT24C08.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41892	    476	   2572	  44940	   af8c	Drone_7-1_AT24C08.elf
+Finished building: default.size.stdout
+ 
+
+20:11:29 Build Finished. 0 errors, 0 warnings. (took 546ms)
+

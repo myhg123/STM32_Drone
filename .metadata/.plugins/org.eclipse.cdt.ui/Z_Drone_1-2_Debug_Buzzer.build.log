@@ -1,0 +1,16 @@
+21:59:59 **** Build of configuration Debug for project Z_Drone_1-2_Debug_Buzzer ****
+make -j16 all 
+arm-none-eabi-gcc -o "Z_Drone_1-2_Debug_Buzzer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\STM32CubeIDE\Drone_project\Z_Drone_1-2_Debug_Buzzer\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Z_Drone_1-2_Debug_Buzzer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Z_Drone_1-2_Debug_Buzzer.elf
+ 
+arm-none-eabi-size  Z_Drone_1-2_Debug_Buzzer.elf 
+arm-none-eabi-objdump -h -S Z_Drone_1-2_Debug_Buzzer.elf  > "Z_Drone_1-2_Debug_Buzzer.list"
+   text	   data	    bss	    dec	    hex	filename
+  10080	     20	   1644	  11744	   2de0	Z_Drone_1-2_Debug_Buzzer.elf
+Finished building: default.size.stdout
+ 
+Finished building: Z_Drone_1-2_Debug_Buzzer.list
+ 
+
+22:00:00 Build Finished. 0 errors, 0 warnings. (took 888ms)
+

@@ -1,0 +1,16 @@
+21:57:23 **** Build of configuration Debug for project Z_Drone_1-1_Debug_LED ****
+make -j16 all 
+arm-none-eabi-gcc -o "Z_Drone_1-1_Debug_LED.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\STM32CubeIDE\Drone_project\Z_Drone_1-1_Debug_LED\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Z_Drone_1-1_Debug_LED.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Z_Drone_1-1_Debug_LED.elf
+ 
+arm-none-eabi-size  Z_Drone_1-1_Debug_LED.elf 
+arm-none-eabi-objdump -h -S Z_Drone_1-1_Debug_LED.elf  > "Z_Drone_1-1_Debug_LED.list"
+   text	   data	    bss	    dec	    hex	filename
+   5972	     20	   1572	   7564	   1d8c	Z_Drone_1-1_Debug_LED.elf
+Finished building: default.size.stdout
+ 
+Finished building: Z_Drone_1-1_Debug_LED.list
+ 
+
+21:57:24 Build Finished. 0 errors, 0 warnings. (took 921ms)
+

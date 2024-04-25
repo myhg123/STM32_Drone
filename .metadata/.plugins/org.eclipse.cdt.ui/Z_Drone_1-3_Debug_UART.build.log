@@ -1,0 +1,30 @@
+18:48:33 **** Incremental Build of configuration Debug for project Z_Drone_1-3_Debug_UART ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function '_write':
+../Core/Src/main.c:34:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   34 |         HAL_UART_Transmit(&huart6, p, len, 1);
+      |                                    ^
+      |                                    |
+      |                                    char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Z_Drone_1-3_Debug_UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\STM32CubeIDE\Drone_project\Z_Drone_1-3_Debug_UART\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Z_Drone_1-3_Debug_UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Z_Drone_1-3_Debug_UART.elf
+ 
+arm-none-eabi-size  Z_Drone_1-3_Debug_UART.elf 
+arm-none-eabi-objdump -h -S Z_Drone_1-3_Debug_UART.elf  > "Z_Drone_1-3_Debug_UART.list"
+   text	   data	    bss	    dec	    hex	filename
+  15112	     20	   1716	  16848	   41d0	Z_Drone_1-3_Debug_UART.elf
+Finished building: default.size.stdout
+ 
+Finished building: Z_Drone_1-3_Debug_UART.list
+ 
+
+18:48:34 Build Finished. 0 errors, 1 warnings. (took 1s.271ms)
+

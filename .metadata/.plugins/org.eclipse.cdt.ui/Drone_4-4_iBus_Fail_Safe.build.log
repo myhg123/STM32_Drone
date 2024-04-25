@@ -1,0 +1,105 @@
+16:34:58 **** Build of configuration Debug for project Drone_4-4_iBus_Fail_Safe ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/FS-iA6B.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -DUSE_FULL_LL_DRIVER -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/FS-iA6B.d" -MT"Core/Src/FS-iA6B.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FS-iA6B.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -DUSE_FULL_LL_DRIVER -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:64: warning: "CHIP_SELECT" redefined
+   64 | #define CHIP_SELECT(ICM20602)           LL_GPIO_ResetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/BNO080.h:87: note: this is the location of the previous definition
+   87 | #define CHIP_SELECT(BNO080)             LL_GPIO_ResetOutputPin(BNO080_SPI_CS_PORT, BNO080_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:65: warning: "CHIP_DESELECT" redefined
+   65 | #define CHIP_DESELECT(ICM20602)         LL_GPIO_SetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/BNO080.h:88: note: this is the location of the previous definition
+   88 | #define CHIP_DESELECT(BNO080)   LL_GPIO_SetOutputPin(BNO080_SPI_CS_PORT, BNO080_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:31:
+../Core/Inc/LPS22HH.h:65: warning: "CHIP_SELECT" redefined
+   65 | #define CHIP_SELECT(LPS22HH)            LL_GPIO_ResetOutputPin(LPS22HH_SPI_CS_PORT, LPS22HH_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:64: note: this is the location of the previous definition
+   64 | #define CHIP_SELECT(ICM20602)           LL_GPIO_ResetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:31:
+../Core/Inc/LPS22HH.h:66: warning: "CHIP_DESELECT" redefined
+   66 | #define CHIP_DESELECT(LPS22HH)          LL_GPIO_SetOutputPin(LPS22HH_SPI_CS_PORT, LPS22HH_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:65: note: this is the location of the previous definition
+   65 | #define CHIP_DESELECT(ICM20602)         LL_GPIO_SetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:31:
+../Core/Inc/LPS22HH.h:79: warning: "WHO_AM_I" redefined
+   79 | #define WHO_AM_I                0x0F
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:132: note: this is the location of the previous definition
+  132 | #define WHO_AM_I        0x75 //The default value of the register is 0x12.
+      | 
+In file included from ../Core/Src/main.c:31:
+../Core/Inc/LPS22HH.h:98: warning: "TEMP_OUT_L" redefined
+   98 | #define TEMP_OUT_L              0x2B
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:111: note: this is the location of the previous definition
+  111 | #define TEMP_OUT_L      0x42
+      | 
+In file included from ../Core/Src/main.c:31:
+../Core/Inc/LPS22HH.h:99: warning: "TEMP_OUT_H" redefined
+   99 | #define TEMP_OUT_H              0x2C
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:110: note: this is the location of the previous definition
+  110 | #define TEMP_OUT_H      0x41
+      | 
+../Core/Src/main.c: In function '_write':
+../Core/Src/main.c:44:39: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit_IT' differ in signedness [-Wpointer-sign]
+   44 |         HAL_UART_Transmit_IT(&huart6, p, len);
+      |                                       ^
+      |                                       |
+      |                                       char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:747:82: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  747 | HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:210:33: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  210 |                                 printf("%d\t%d\t%d\t%d\t%d\t%d\n",
+      |                                 ^~~~~~
+../Core/Src/main.c:34:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   33 | #include "FS-iA6B.h"
+  +++ |+#include <stdio.h>
+   34 | /* USER CODE END Includes */
+../Core/Src/main.c:210:33: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  210 |                                 printf("%d\t%d\t%d\t%d\t%d\t%d\n",
+      |                                 ^~~~~~
+../Core/Src/main.c:210:33: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:92:15: warning: unused variable 'quatRadianAccuracy' [-Wunused-variable]
+   92 |         float quatRadianAccuracy;
+      |               ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:91:15: warning: unused variable 'q' [-Wunused-variable]
+   91 |         float q[4];
+      |               ^
+arm-none-eabi-gcc -o "Drone_4-4_iBus_Fail_Safe.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_4-4_iBus_Fail_Safe\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone_4-4_iBus_Fail_Safe.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone_4-4_iBus_Fail_Safe.elf
+ 
+arm-none-eabi-size  Drone_4-4_iBus_Fail_Safe.elf 
+arm-none-eabi-objdump -h -S Drone_4-4_iBus_Fail_Safe.elf  > "Drone_4-4_iBus_Fail_Safe.list"
+   text	   data	    bss	    dec	    hex	filename
+  27756	    112	   2440	  30308	   7664	Drone_4-4_iBus_Fail_Safe.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone_4-4_iBus_Fail_Safe.list
+ 
+
+16:35:00 Build Finished. 0 errors, 12 warnings. (took 1s.767ms)
+

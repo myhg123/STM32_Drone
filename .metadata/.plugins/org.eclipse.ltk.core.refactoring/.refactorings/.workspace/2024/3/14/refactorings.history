@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Drone_3-1_M8N_PC_Interface&apos;" deleteContents="false" description="Delete resource &apos;Drone_3-1_M8N_PC_Interface&apos;" element1="/Drone_3-1_M8N_PC_Interface" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1711858100439"/>
+</session>

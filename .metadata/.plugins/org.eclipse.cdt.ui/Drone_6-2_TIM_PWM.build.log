@@ -1,0 +1,10 @@
+18:23:33 **** Incremental Build of configuration Debug for project Drone_6-2_TIM_PWM ****
+make -j16 all 
+arm-none-eabi-size  Drone_6-2_TIM_PWM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27680	    112	   2488	  30280	   7648	Drone_6-2_TIM_PWM.elf
+Finished building: default.size.stdout
+ 
+
+18:23:33 Build Finished. 0 errors, 0 warnings. (took 420ms)
+

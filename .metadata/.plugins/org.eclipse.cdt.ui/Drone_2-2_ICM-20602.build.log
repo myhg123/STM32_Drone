@@ -1,0 +1,64 @@
+19:55:50 **** Build of configuration Debug for project Drone_2-2_ICM-20602 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -DUSE_FULL_LL_DRIVER -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:64: warning: "CHIP_SELECT" redefined
+   64 | #define CHIP_SELECT(ICM20602)           LL_GPIO_ResetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/BNO080.h:87: note: this is the location of the previous definition
+   87 | #define CHIP_SELECT(BNO080)             LL_GPIO_ResetOutputPin(BNO080_SPI_CS_PORT, BNO080_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/ICM20602.h:65: warning: "CHIP_DESELECT" redefined
+   65 | #define CHIP_DESELECT(ICM20602)         LL_GPIO_SetOutputPin(ICM20602_SPI_CS_PORT, ICM20602_SPI_CS_PIN)
+      | 
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/BNO080.h:88: note: this is the location of the previous definition
+   88 | #define CHIP_DESELECT(BNO080)   LL_GPIO_SetOutputPin(BNO080_SPI_CS_PORT, BNO080_SPI_CS_PIN)
+      | 
+../Core/Src/main.c: In function '_write':
+../Core/Src/main.c:37:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   37 |         HAL_UART_Transmit(&huart6, p, len, 1);
+      |                                    ^
+      |                                    |
+      |                                    char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  152 |                   printf("%d,%d,%d\n",(int)(ICM20602.gyro_x_raw*100),
+      |                   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   30 | #include "ICM20602.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:152:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  152 |                   printf("%d,%d,%d\n",(int)(ICM20602.gyro_x_raw*100),
+      |                   ^~~~~~
+../Core/Src/main.c:152:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:78:15: warning: unused variable 'quatRadianAccuracy' [-Wunused-variable]
+   78 |         float quatRadianAccuracy;
+      |               ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:77:15: warning: unused variable 'q' [-Wunused-variable]
+   77 |         float q[4];
+      |               ^
+arm-none-eabi-gcc -o "Drone_2-2_ICM-20602.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_2-2_ICM-20602\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone_2-2_ICM-20602.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drone_2-2_ICM-20602.elf
+ 
+arm-none-eabi-size  Drone_2-2_ICM-20602.elf 
+arm-none-eabi-objdump -h -S Drone_2-2_ICM-20602.elf  > "Drone_2-2_ICM-20602.list"
+   text	   data	    bss	    dec	    hex	filename
+  24796	    112	   2232	  27140	   6a04	Drone_2-2_ICM-20602.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drone_2-2_ICM-20602.list
+ 
+
+19:55:52 Build Finished. 0 errors, 7 warnings. (took 1s.571ms)
+

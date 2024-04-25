@@ -1,0 +1,10 @@
+14:00:24 **** Incremental Build of configuration Debug for project Drone_5-1_Sensor_Chk ****
+make -j16 all 
+arm-none-eabi-size  Drone_5-1_Sensor_Chk.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32576	    116	   2484	  35176	   8968	Drone_5-1_Sensor_Chk.elf
+Finished building: default.size.stdout
+ 
+
+14:00:25 Build Finished. 0 errors, 0 warnings. (took 562ms)
+

@@ -1,0 +1,4 @@
+../Core/Src/FS-iA6B.c:12:15:iBus_Check_CHKSUM	4
+../Core/Src/FS-iA6B.c:22:6:iBus_Parsing	1
+../Core/Src/FS-iA6B.c:34:15:iBus_isActiveFailsafe	1
+../Core/Src/FS-iA6B.c:39:6:FSiA6B_UART5_Initialization	2

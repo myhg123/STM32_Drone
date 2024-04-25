@@ -1,0 +1,3 @@
+../Core/Src/FS-iA6B.c:12:15:iBus_Check_CHKSUM	24	static
+../Core/Src/FS-iA6B.c:22:6:iBus_Parsing	16	static
+../Core/Src/FS-iA6B.c:31:6:FSiA6B_UART5_Initialization	8	static
