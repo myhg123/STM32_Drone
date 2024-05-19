@@ -1,0 +1,10 @@
+19:43:04 **** Incremental Build of configuration Debug for project Drone_8-5_GPS_TX ****
+make -j16 all 
+arm-none-eabi-size  Drone_8-5_GPS_TX.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53440	    480	   3136	  57056	   dee0	Drone_8-5_GPS_TX.elf
+Finished building: default.size.stdout
+ 
+
+19:43:04 Build Finished. 0 errors, 0 warnings. (took 185ms)
+

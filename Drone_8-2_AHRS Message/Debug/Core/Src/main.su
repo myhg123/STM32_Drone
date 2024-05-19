@@ -1,0 +1,9 @@
+../Core/Src/main.c:43:5:_write	24	static
+../Core/Src/main.c:100:5:main	88	static
+../Core/Src/main.c:389:6:SystemClock_Config	88	static
+../Core/Src/main.c:431:5:Is_iBus_Throttle_Min	8	static
+../Core/Src/main.c:444:6:ESC_Calibration	8	static
+../Core/Src/main.c:458:5:Is_iBus_Received	8	static
+../Core/Src/main.c:470:6:HAL_UART_RxCpltCallback	16	static
+../Core/Src/main.c:553:6:BNO080_Calibration	96	static
+../Core/Src/main.c:684:6:Error_Handler	4	static,ignoring_inline_asm

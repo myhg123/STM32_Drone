@@ -1,0 +1,9 @@
+../Core/Src/main.c:43:5:_write	1
+../Core/Src/main.c:100:5:main	11
+../Core/Src/main.c:389:6:SystemClock_Config	3
+../Core/Src/main.c:431:5:Is_iBus_Throttle_Min	4
+../Core/Src/main.c:444:6:ESC_Calibration	1
+../Core/Src/main.c:458:5:Is_iBus_Received	3
+../Core/Src/main.c:470:6:HAL_UART_RxCpltCallback	17
+../Core/Src/main.c:553:6:BNO080_Calibration	17
+../Core/Src/main.c:684:6:Error_Handler	1

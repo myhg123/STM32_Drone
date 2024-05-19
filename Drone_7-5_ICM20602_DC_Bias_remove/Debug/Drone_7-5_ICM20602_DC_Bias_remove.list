@@ -39,15 +39,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00006a52  00000000  00000000  0002a6a1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0001d9f2  00000000  00000000  000310f3  2**0
+ 18 .debug_line   0001d9f5  00000000  00000000  000310f3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000df064  00000000  00000000  0004eae5  2**0
+ 19 .debug_str    000df077  00000000  00000000  0004eae8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  0012db49  2**0
+ 20 .comment      00000043  00000000  00000000  0012db5f  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00007090  00000000  00000000  0012db8c  2**2
+ 21 .debug_frame  00007090  00000000  00000000  0012dba4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 0000007f  00000000  00000000  00134c1c  2**0
+ 22 .debug_line_str 0000007f  00000000  00000000  00134c34  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4783,10 +4783,10 @@ int _write(int file, char *p, int len) {
  80023e6:	60f8      	str	r0, [r7, #12]
  80023e8:	60b9      	str	r1, [r7, #8]
  80023ea:	607a      	str	r2, [r7, #4]
-	//기존 방식?? ??�????? 방식?��?��?�� ?��?��?���????? ?��번에 많�? ?��?�� 보내질때 ??�????? 방식?? ???��?��?��?���????? ?��?�� ?��류�? 발생?��?��.
+	//기존 방식?? ??�?????? 방식?��?��?�� ?��?��?���?????? ?��번에 많�? ?��?�� 보내질때 ??�?????? 방식?? ???��?��?��?���?????? ?��?�� ?��류�? 발생?��?��.
 	//HAL_UART_Transmit(&huart6, p, len, 1);
 
-	//?��?��?��?�� 방식?�� ?��?��?��?�� ?��?��?�� 문제�????? ?��결한?��.
+	//?��?��?��?�� 방식?�� ?��?��?��?�� ?��?��?�� 문제�?????? ?��결한?��.
 	HAL_UART_Transmit_IT(&huart6, p, len);
  80023ec:	687b      	ldr	r3, [r7, #4]
  80023ee:	b29b      	uxth	r3, r3
@@ -4804,16 +4804,17 @@ int _write(int file, char *p, int len) {
  8002404:	20000514 	.word	0x20000514
 
 08002408 <main>:
-
 /**
- * @brief  The application entry point.
- * @retval int
- */
-int main(void) {
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
  8002408:	b590      	push	{r4, r7, lr}
  800240a:	b091      	sub	sp, #68	@ 0x44
  800240c:	af00      	add	r7, sp, #0
-	/* USER CODE BEGIN 1 */
+
+  /* USER CODE BEGIN 1 */
 	float q[4];
 	float quatRadianAccuracy;
 	unsigned char buf_read[16] = { 0 };
@@ -4840,50 +4841,50 @@ int main(void) {
  800242e:	87bb      	strh	r3, [r7, #60]	@ 0x3c
  8002430:	f64f 73fd 	movw	r3, #65533	@ 0xfffd
  8002434:	877b      	strh	r3, [r7, #58]	@ 0x3a
-	/* USER CODE END 1 */
+  /* USER CODE END 1 */
 
-	/* MCU Configuration--------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
  8002436:	f001 f85b 	bl	80034f0 <HAL_Init>
-	/* USER CODE BEGIN Init */
+  /* USER CODE BEGIN Init */
 
-	/* USER CODE END Init */
+  /* USER CODE END Init */
 
-	/* Configure the system clock */
-	SystemClock_Config();
+  /* Configure the system clock */
+  SystemClock_Config();
  800243a:	f000 f937 	bl	80026ac <SystemClock_Config>
-	/* USER CODE BEGIN SysInit */
+  /* USER CODE BEGIN SysInit */
 
-	/* USER CODE END SysInit */
+  /* USER CODE END SysInit */
 
-	/* Initialize all configured peripherals */
-	MX_GPIO_Init();
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
  800243e:	f7ff fe9d 	bl	800217c <MX_GPIO_Init>
-	MX_DMA_Init();
+  MX_DMA_Init();
  8002442:	f7ff fe7b 	bl	800213c <MX_DMA_Init>
-	MX_TIM3_Init();
+  MX_TIM3_Init();
  8002446:	f000 fd15 	bl	8002e74 <MX_TIM3_Init>
-	MX_USART6_UART_Init();
+  MX_USART6_UART_Init();
  800244a:	f000 ff13 	bl	8003274 <MX_USART6_UART_Init>
-	MX_SPI2_Init();
+  MX_SPI2_Init();
  800244e:	f000 fb2f 	bl	8002ab0 <MX_SPI2_Init>
-	MX_SPI1_Init();
+  MX_SPI1_Init();
  8002452:	f000 fadb 	bl	8002a0c <MX_SPI1_Init>
-	MX_SPI3_Init();
+  MX_SPI3_Init();
  8002456:	f000 fb7f 	bl	8002b58 <MX_SPI3_Init>
-	MX_UART4_Init();
+  MX_UART4_Init();
  800245a:	f000 feb7 	bl	80031cc <MX_UART4_Init>
-	MX_UART5_Init();
+  MX_UART5_Init();
  800245e:	f000 fedf 	bl	8003220 <MX_UART5_Init>
-	MX_TIM5_Init();
+  MX_TIM5_Init();
  8002462:	f000 fd7d 	bl	8002f60 <MX_TIM5_Init>
-	MX_I2C1_Init();
+  MX_I2C1_Init();
  8002466:	f7ff ff45 	bl	80022f4 <MX_I2C1_Init>
-	MX_ADC1_Init();
+  MX_ADC1_Init();
  800246a:	f7ff fd9f 	bl	8001fac <MX_ADC1_Init>
-	/* USER CODE BEGIN 2 */
+  /* USER CODE BEGIN 2 */
 
 	M8N_initialization();
  800246e:	f7ff fd75 	bl	8001f5c <M8N_initialization>
@@ -4931,7 +4932,7 @@ int main(void) {
  80024be:	4872      	ldr	r0, [pc, #456]	@ (8002688 <main+0x280>)
  80024c0:	f003 fa0c 	bl	80058dc <HAL_TIM_PWM_Start>
 
-	// pdata는 데이터를 저장할 주소
+	// pdata?�� ?��?��?���? ???��?�� 주소
 	HAL_ADC_Start_DMA(&hadc1, &adcVal, 1);
  80024c4:	1cbb      	adds	r3, r7, #2
  80024c6:	2201      	movs	r2, #1
@@ -5038,9 +5039,9 @@ int main(void) {
  8002588:	4841      	ldr	r0, [pc, #260]	@ (8002690 <main+0x288>)
  800258a:	f003 fa6f 	bl	8005a6c <HAL_TIM_PWM_Stop>
 	while (1) {
-		/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-		/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
 		batVolt = adcVal * 0.003619f;
  800258e:	887b      	ldrh	r3, [r7, #2]
@@ -5154,22 +5155,22 @@ int main(void) {
  80026a8:	0800a6a0 	.word	0x0800a6a0
 
 080026ac <SystemClock_Config>:
-
 /**
- * @brief System Clock Configuration
- * @retval None
- */
-void SystemClock_Config(void) {
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
  80026ac:	b580      	push	{r7, lr}
  80026ae:	b094      	sub	sp, #80	@ 0x50
  80026b0:	af00      	add	r7, sp, #0
-	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
  80026b2:	f107 0320 	add.w	r3, r7, #32
  80026b6:	2230      	movs	r2, #48	@ 0x30
  80026b8:	2100      	movs	r1, #0
  80026ba:	4618      	mov	r0, r3
  80026bc:	f006 f896 	bl	80087ec <memset>
-	RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  80026c0:	f107 030c 	add.w	r3, r7, #12
  80026c4:	2200      	movs	r2, #0
  80026c6:	601a      	str	r2, [r3, #0]
@@ -5178,9 +5179,9 @@ void SystemClock_Config(void) {
  80026cc:	60da      	str	r2, [r3, #12]
  80026ce:	611a      	str	r2, [r3, #16]
 
-	/** Configure the main internal regulator output voltage
-	 */
-	__HAL_RCC_PWR_CLK_ENABLE();
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
  80026d0:	2300      	movs	r3, #0
  80026d2:	60bb      	str	r3, [r7, #8]
  80026d4:	4b28      	ldr	r3, [pc, #160]	@ (8002778 <SystemClock_Config+0xcc>)
@@ -5193,7 +5194,7 @@ void SystemClock_Config(void) {
  80026e4:	f003 5380 	and.w	r3, r3, #268435456	@ 0x10000000
  80026e8:	60bb      	str	r3, [r7, #8]
  80026ea:	68bb      	ldr	r3, [r7, #8]
-	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
  80026ec:	2300      	movs	r3, #0
  80026ee:	607b      	str	r3, [r7, #4]
  80026f0:	4b22      	ldr	r3, [pc, #136]	@ (800277c <SystemClock_Config+0xd0>)
@@ -5207,64 +5208,65 @@ void SystemClock_Config(void) {
  8002704:	607b      	str	r3, [r7, #4]
  8002706:	687b      	ldr	r3, [r7, #4]
 
-	/** Initializes the RCC Oscillators according to the specified parameters
-	 * in the RCC_OscInitTypeDef structure.
-	 */
-	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
  8002708:	2301      	movs	r3, #1
  800270a:	623b      	str	r3, [r7, #32]
-	RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
  800270c:	f44f 3380 	mov.w	r3, #65536	@ 0x10000
  8002710:	627b      	str	r3, [r7, #36]	@ 0x24
-	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
  8002712:	2302      	movs	r3, #2
  8002714:	63bb      	str	r3, [r7, #56]	@ 0x38
-	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
  8002716:	f44f 0380 	mov.w	r3, #4194304	@ 0x400000
  800271a:	63fb      	str	r3, [r7, #60]	@ 0x3c
-	RCC_OscInitStruct.PLL.PLLM = 4;
+  RCC_OscInitStruct.PLL.PLLM = 4;
  800271c:	2304      	movs	r3, #4
  800271e:	643b      	str	r3, [r7, #64]	@ 0x40
-	RCC_OscInitStruct.PLL.PLLN = 168;
+  RCC_OscInitStruct.PLL.PLLN = 168;
  8002720:	23a8      	movs	r3, #168	@ 0xa8
  8002722:	647b      	str	r3, [r7, #68]	@ 0x44
-	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
  8002724:	2302      	movs	r3, #2
  8002726:	64bb      	str	r3, [r7, #72]	@ 0x48
-	RCC_OscInitStruct.PLL.PLLQ = 4;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
  8002728:	2304      	movs	r3, #4
  800272a:	64fb      	str	r3, [r7, #76]	@ 0x4c
-	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
  800272c:	f107 0320 	add.w	r3, r7, #32
  8002730:	4618      	mov	r0, r3
  8002732:	f002 fb93 	bl	8004e5c <HAL_RCC_OscConfig>
  8002736:	4603      	mov	r3, r0
  8002738:	2b00      	cmp	r3, #0
  800273a:	d001      	beq.n	8002740 <SystemClock_Config+0x94>
-		Error_Handler();
+  {
+    Error_Handler();
  800273c:	f000 f904 	bl	8002948 <Error_Handler>
-	}
+  }
 
-	/** Initializes the CPU, AHB and APB buses clocks
-	 */
-	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
  8002740:	230f      	movs	r3, #15
  8002742:	60fb      	str	r3, [r7, #12]
-			| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
-	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
  8002744:	2302      	movs	r3, #2
  8002746:	613b      	str	r3, [r7, #16]
-	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
  8002748:	2300      	movs	r3, #0
  800274a:	617b      	str	r3, [r7, #20]
-	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
  800274c:	f44f 53a0 	mov.w	r3, #5120	@ 0x1400
  8002750:	61bb      	str	r3, [r7, #24]
-	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
  8002752:	f44f 5380 	mov.w	r3, #4096	@ 0x1000
  8002756:	61fb      	str	r3, [r7, #28]
 
-	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK) {
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
  8002758:	f107 030c 	add.w	r3, r7, #12
  800275c:	2105      	movs	r1, #5
  800275e:	4618      	mov	r0, r3
@@ -5272,9 +5274,10 @@ void SystemClock_Config(void) {
  8002764:	4603      	mov	r3, r0
  8002766:	2b00      	cmp	r3, #0
  8002768:	d001      	beq.n	800276e <SystemClock_Config+0xc2>
-		Error_Handler();
+  {
+    Error_Handler();
  800276a:	f000 f8ed 	bl	8002948 <Error_Handler>
-	}
+  }
 }
  800276e:	bf00      	nop
  8002770:	3750      	adds	r7, #80	@ 0x50
@@ -5439,7 +5442,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
  800284a:	4838      	ldr	r0, [pc, #224]	@ (800292c <HAL_UART_RxCpltCallback+0x1ac>)
  800284c:	f003 ffb1 	bl	80067b2 <HAL_UART_Receive_IT>
 
-		//GPS�????? ?��?�� ?��?��받�? ?��?��?���????? 바로 com?���????? 보내�?????기에 주석처리?��?��.
+		//GPS�?????? ?��?�� ?��?��받�? ?��?��?���?????? 바로 com?���?????? 보내�??????기에 주석처리?��?��.
 		//HAL_UART_Transmit(&huart6, &uart4_rxData, 1, 0);
 
 		switch (cnt) {
@@ -5526,7 +5529,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
  80028ca:	4b1b      	ldr	r3, [pc, #108]	@ (8002938 <HAL_UART_RxCpltCallback+0x1b8>)
  80028cc:	2201      	movs	r2, #1
  80028ce:	701a      	strb	r2, [r3, #0]
-		default: //case?�� 만족?���????? ?��?��?�� ?��?��?��?��.
+		default: //case?�� 만족?���?????? ?��?��?�� ?��?��?��?��.
 			m8n_rx_buf[cnt] = uart4_rxData;
  80028d0:	4b17      	ldr	r3, [pc, #92]	@ (8002930 <HAL_UART_RxCpltCallback+0x1b0>)
  80028d2:	781b      	ldrb	r3, [r3, #0]
@@ -5585,12 +5588,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
  8002944:	20000514 	.word	0x20000514
 
 08002948 <Error_Handler>:
-
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
-void Error_Handler(void) {
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
  8002948:	b480      	push	{r7}
  800294a:	af00      	add	r7, sp, #0
   \details Disables IRQ interrupts by setting special-purpose register PRIMASK.
@@ -5602,7 +5605,7 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  800294c:	b672      	cpsid	i
 }
  800294e:	bf00      	nop
-	/* USER CODE BEGIN Error_Handler_Debug */
+  /* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 	__disable_irq();
 	while (1) {
@@ -6093,6 +6096,7 @@ void HAL_MspInit(void)
  8002bfc:	b480      	push	{r7}
  8002bfe:	b083      	sub	sp, #12
  8002c00:	af00      	add	r7, sp, #0
+
   /* USER CODE BEGIN MspInit 0 */
 
   /* USER CODE END MspInit 0 */

@@ -1,0 +1,4 @@
+../Core/Src/AT24C08.c:9:6:AT24C08_Page_Write	40	static
+../Core/Src/AT24C08.c:21:6:AT24C08_Page_Read	40	static
+../Core/Src/AT24C08.c:31:6:EP_PIDGain_Write	56	static
+../Core/Src/AT24C08.c:93:15:EP_PIDGain_Read	56	static

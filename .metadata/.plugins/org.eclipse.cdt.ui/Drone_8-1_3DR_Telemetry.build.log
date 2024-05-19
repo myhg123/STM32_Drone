@@ -1,0 +1,10 @@
+19:50:41 **** Incremental Build of configuration Debug for project Drone_8-1_3DR_Telemetry ****
+make -j16 all 
+arm-none-eabi-size  Drone_8-1_3DR_Telemetry.elf 
+   text	   data	    bss	    dec	    hex	filename
+  43844	    476	   2812	  47132	   b81c	Drone_8-1_3DR_Telemetry.elf
+Finished building: default.size.stdout
+ 
+
+19:50:41 Build Finished. 0 errors, 0 warnings. (took 184ms)
+

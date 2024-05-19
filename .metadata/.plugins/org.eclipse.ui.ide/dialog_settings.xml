@@ -7,7 +7,14 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-5_GPS_TX"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-4_AHRS_timer"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-5_Tx_GPS"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-2_AHRS Message"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-1_3DR Telemetry"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-1_3DR_Telemetry"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_2-1_BNO080"/>
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_7-5_ICM20602_DC_Bias_remove"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_6-3_ESC_Calibration_And_Motor_Operation"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_6-2_TIM_PWM"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_7-4_BNO080_Calibration"/>
@@ -20,13 +27,6 @@
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_4-4_iBus_Fail_Safe"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_6-2_TIM_PWM"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_5-1_Sensor_Chk"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_4-3_iBus_Data_Pasing"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_4-1_iA6B_PC_Interface"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_2-1_BNO080"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_3-1_M8N_PC_Interface"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_2-3_LPS22HH"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_2-2_ICM-20602"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Z_Drone_1-3_Debug_UART"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
