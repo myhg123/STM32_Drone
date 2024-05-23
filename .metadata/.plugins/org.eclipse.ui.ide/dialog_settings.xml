@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-6_PID_gain"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-5_GPS_TX"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-4_AHRS_timer"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-5_Tx_GPS"/>
@@ -26,7 +27,6 @@
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_6-3_ESC_Calibration_And_Motor_Operation"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_4-4_iBus_Fail_Safe"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_6-2_TIM_PWM"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_5-1_Sensor_Chk"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
