@@ -6457,3 +6457,361 @@ java.lang.Exception: Resource '/Z_Drone_1-1_Debug_LED' does not exist.
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+!SESSION 2024-05-23 20:27:53.687 -----------------------------------------------
+eclipse.buildId=Version 1.15.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-6_PID_gain\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-6_PID_gain\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-05-23 20:28:11.174
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-05-23 20:28:11.181
+!MESSAGE Log4j2 initialized with config file C:\Users\kccistc\Desktop\Project\Drone_project\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-05-23 20:28:16.607
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.core.resources 4 77 2024-05-23 20:28:17.040
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-05-23 20:28:17.040
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-05-23 20:28:17.040
+!MESSAGE C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-6_PID_gain overlaps the location of another project: 'Drone_8-6_PID_gain'
+
+!ENTRY org.eclipse.core.resources 4 368 2024-05-23 20:28:17.045
+!MESSAGE Resource '/Z_Drone_1-1_Debug_LED' does not exist.
+!STACK 0
+java.lang.Exception: Resource '/Z_Drone_1-1_Debug_LED' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:183)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:244)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:231)
+	at com.st.stm32cube.ide.mcu.converters.AbstractCubeIDEProjectConfigurator.openReadmeFile(AbstractCubeIDEProjectConfigurator.java:1008)
+	at com.st.stm32cube.ide.mcu.ide.ui.project.internal.MCUProjectImporter$3.run(MCUProjectImporter.java:387)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:172)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4046)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3662)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2024-05-23 20:28:20.986
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+	at com.st.stm32cube.ide.mcu.build.ui.decorator.BoldDecorator.decorate(BoldDecorator.java:79)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 4 2024-05-23 20:28:20.987
+!MESSAGE Exception in Decorator. The 'linkerDecorator' decorator will be disabled.
+!SUBENTRY 1 org.eclipse.ui 4 4 2024-05-23 20:28:20.987
+!MESSAGE Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+	at com.st.stm32cube.ide.mcu.build.ui.decorator.BoldDecorator.decorate(BoldDecorator.java:79)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-23 20:39:57.162
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-23 20:40:39.969
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY net.sourceforge.vrapper.eclipse 4 0 2024-05-23 21:06:47.725
+!MESSAGE NumCharsDeleted caused us to move out of bounds! Startposition: M 0, numCharsDeleted: 5233
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-23 21:08:47.494
+!MESSAGE No .vrapperrc or _vrapperrc found.
+!SESSION 2024-05-28 20:05:35.071 -----------------------------------------------
+eclipse.buildId=Version 1.15.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-7_RX_PIDGain\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-7_RX_PIDGain\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-05-28 20:05:56.655
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-05-28 20:05:56.663
+!MESSAGE Log4j2 initialized with config file C:\Users\kccistc\Desktop\Project\Drone_project\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-05-28 20:06:04.108
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.core.resources 4 77 2024-05-28 20:06:04.516
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-05-28 20:06:04.516
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-05-28 20:06:04.516
+!MESSAGE C:\Users\kccistc\Desktop\Project\Drone_project\Drone_8-7_RX_PIDGain overlaps the location of another project: 'Drone_8-7_RX_PIDGain'
+
+!ENTRY org.eclipse.core.resources 4 368 2024-05-28 20:06:04.522
+!MESSAGE Resource '/Z_Drone_1-1_Debug_LED' does not exist.
+!STACK 0
+java.lang.Exception: Resource '/Z_Drone_1-1_Debug_LED' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:183)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:244)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:231)
+	at com.st.stm32cube.ide.mcu.converters.AbstractCubeIDEProjectConfigurator.openReadmeFile(AbstractCubeIDEProjectConfigurator.java:1008)
+	at com.st.stm32cube.ide.mcu.ide.ui.project.internal.MCUProjectImporter$3.run(MCUProjectImporter.java:387)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:172)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4046)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3662)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 20:06:15.186
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY org.eclipse.ui 4 0 2024-05-28 20:09:39.004
+!MESSAGE Unhandled event loop exception
+!STACK 0
+net.sourceforge.vrapper.platform.VrapperPlatformException: Cannot set caret position to V 13412
+	at net.sourceforge.vrapper.eclipse.platform.EclipseCursorAndSelection.setPosition(EclipseCursorAndSelection.java:183)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.setPosition(DefaultEditorAdaptor.java:495)
+	at net.sourceforge.vrapper.vim.commands.PasteAfterCommand.execute(PasteAfterCommand.java:86)
+	at net.sourceforge.vrapper.vim.commands.CountAwareCommand.execute(CountAwareCommand.java:16)
+	at net.sourceforge.vrapper.vim.modes.CommandBasedMode.executeCommand(CommandBasedMode.java:265)
+	at net.sourceforge.vrapper.vim.modes.CommandBasedMode.handleKey(CommandBasedMode.java:319)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKey0(DefaultEditorAdaptor.java:832)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKeyOffRecord(DefaultEditorAdaptor.java:467)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKey(DefaultEditorAdaptor.java:442)
+	at net.sourceforge.vrapper.eclipse.interceptor.VimInputInterceptorFactory$VimInputInterceptor.verifyKey(VimInputInterceptorFactory.java:354)
+	at org.eclipse.jface.text.TextViewer$VerifyKeyListenersManager.verifyKey(TextViewer.java:480)
+	at org.eclipse.swt.custom.StyledTextListener.handleEvent(StyledTextListener.java:68)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1075)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:778)
+	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:5742)
+	at org.eclipse.swt.custom.StyledText.lambda$28(StyledText.java:5426)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1075)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1117)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1594)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4866)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:345)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4744)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5039)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+Caused by: java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4899)
+	at org.eclipse.swt.SWT.error(SWT.java:4833)
+	at org.eclipse.swt.SWT.error(SWT.java:4804)
+	at org.eclipse.swt.custom.StyledText.setSelectionRanges(StyledText.java:9999)
+	at org.eclipse.swt.custom.StyledText.setSelectionRange(StyledText.java:9955)
+	at org.eclipse.swt.custom.StyledText.setSelection(StyledText.java:9799)
+	at org.eclipse.swt.custom.StyledText.setSelection(StyledText.java:9694)
+	at net.sourceforge.vrapper.eclipse.platform.EclipseCursorAndSelection.setPosition(EclipseCursorAndSelection.java:181)
+	... 55 more
+
+!ENTRY net.sourceforge.vrapper.eclipse 4 0 2024-05-28 20:09:40.186
+!MESSAGE current state was null - this shouldn't have happened!
+
+!ENTRY net.sourceforge.vrapper.eclipse 4 0 2024-05-28 20:34:45.727
+!MESSAGE Command not handled: org.eclipse.ui.navigate.forwardHistory
+!STACK 0
+org.eclipse.core.commands.NotEnabledException: Trying to execute the disabled command org.eclipse.ui.navigate.forwardHistory
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:479)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:485)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.ui.internal.handlers.LegacyHandlerService.executeCommand(LegacyHandlerService.java:389)
+	at net.sourceforge.vrapper.eclipse.commands.EclipseCommand.executeAction(EclipseCommand.java:89)
+	at net.sourceforge.vrapper.eclipse.commands.EclipseCommand.doIt(EclipseCommand.java:77)
+	at net.sourceforge.vrapper.eclipse.commands.EclipseCommand.execute(EclipseCommand.java:38)
+	at net.sourceforge.vrapper.vim.commands.CommandWrappers$1.execute(CommandWrappers.java:23)
+	at net.sourceforge.vrapper.vim.modes.CommandBasedMode.executeCommand(CommandBasedMode.java:265)
+	at net.sourceforge.vrapper.vim.modes.CommandBasedMode.handleKey(CommandBasedMode.java:319)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKey0(DefaultEditorAdaptor.java:832)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKeyOffRecord(DefaultEditorAdaptor.java:467)
+	at net.sourceforge.vrapper.vim.DefaultEditorAdaptor.handleKey(DefaultEditorAdaptor.java:442)
+	at net.sourceforge.vrapper.eclipse.interceptor.VimInputInterceptorFactory$VimInputInterceptor.verifyKey(VimInputInterceptorFactory.java:354)
+	at org.eclipse.jface.text.TextViewer$VerifyKeyListenersManager.verifyKey(TextViewer.java:480)
+	at org.eclipse.swt.custom.StyledTextListener.handleEvent(StyledTextListener.java:68)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1075)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:778)
+	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:5742)
+	at org.eclipse.swt.custom.StyledText.lambda$28(StyledText.java:5426)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1075)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1117)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1594)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4866)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:345)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4744)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5039)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 21:02:23.219
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 21:15:27.057
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-05-28 21:18:36.607
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 7 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-05-28 21:18:36.607
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-05-28 21:18:36.608
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 7 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-05-28 21:18:36.608
+!MESSAGE Existing sessions are:
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 21:19:17.477
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2024-05-28 21:20:59.440
+!MESSAGE Error in final launch sequence:
+
+Setup exceptions
+!STACK 1
+org.eclipse.core.runtime.CoreException: Setup exceptions
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2024-05-28 21:20:59.440
+!MESSAGE Setup exceptions
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 21:49:27.913
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2024-05-28 22:02:44.220
+!MESSAGE No .vrapperrc or _vrapperrc found.

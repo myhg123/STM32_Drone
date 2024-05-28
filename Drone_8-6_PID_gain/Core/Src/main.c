@@ -35,16 +35,17 @@
 #include "M8N.h"
 #include "FS-iA6B.h"
 #include "AT24C08.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
 int _write(int file, char *p, int len) {
-	//기존 방식?? ??�?????????? 방식?��?��?�� ?��?��?���?????????? ?��번에 많�? ?��?�� 보내질때 ??�?????????? 방식?? ???��?��?��?���?????????? ?��?�� ?��류�? 발생?��?��.
+	//기존 방식?? ??�???????? 방식?��?��?�� ?��?��?���???????? ?��번에 많�? ?��?�� 보내질때 ??�???????? 방식?? ???��?��?��?���???????? ?��?�� ?��류�? 발생?��?��.
 	//HAL_UART_Transmit(&huart6, p, len, 1);
 
-	//?��?��?��?�� 방식?�� ?��?��?��?�� ?��?��?�� 문제�?????????? ?��결한?��.
+	//?��?��?��?�� 방식?�� ?��?��?��?�� ?��?��?�� 문제�???????? ?��결한?��.
 	HAL_UART_Transmit_IT(&huart6, p, len);
 	return len;
 }
@@ -78,8 +79,10 @@ uint8_t ibus_rx_cplt_flag = 0;
 float batVolt;
 
 uint8_t telemetry_tx_buf[40];
+uint8_t telemetry_rx_buf[40];
+uint8_t telemetry_rx_cplt_flag=0;
 uint8_t tim7_20ms_flag = 0;
-uint8_t tim7_100ms_flag =0;
+uint8_t tim7_100ms_flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,8 +92,10 @@ int Is_iBus_Throttle_Min(void);
 void ESC_Calibration(void);
 int Is_iBus_Received();
 void BNO080_Calibration(void);
-void Encode_Msg_AHRS(uint8_t * telemetry_tx_buf);
-void Encode_Msg_GPS(uint8_t * telemetry_tx_buf);
+void Encode_Msg_AHRS(uint8_t *telemetry_tx_buf);
+void Encode_Msg_GPS(uint8_t *telemetry_tx_buf);
+void Encode_Msg_PID_Gain(uint8_t *telemetry_tx_buf, uint8_t id, float p,
+		float i, float d);
 
 /* USER CODE END PFP */
 
@@ -100,13 +105,12 @@ void Encode_Msg_GPS(uint8_t * telemetry_tx_buf);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
-int main(void)
-{
+ * @brief  The application entry point.
+ * @retval int
+ */
+int main(void) {
 
-  /* USER CODE BEGIN 1 */
+	/* USER CODE BEGIN 1 */
 	float q[4];
 	float quatRadianAccuracy;
 	unsigned char buf_read[16] = { 0 };
@@ -114,42 +118,42 @@ int main(void)
 			14, 15, 16 };
 	unsigned short adcVal;
 	//find offset data and init
-	short gyro_x_offset =3, gyro_y_offset = 10, gyro_z_offset=-3;
+	short gyro_x_offset = 3, gyro_y_offset = 10, gyro_z_offset = -3;
 
-  /* USER CODE END 1 */
+	/* USER CODE END 1 */
 
-  /* MCU Configuration--------------------------------------------------------*/
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+	/* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+	/* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_DMA_Init();
-  MX_TIM3_Init();
-  MX_USART6_UART_Init();
-  MX_SPI2_Init();
-  MX_SPI1_Init();
-  MX_SPI3_Init();
-  MX_UART4_Init();
-  MX_UART5_Init();
-  MX_TIM5_Init();
-  MX_I2C1_Init();
-  MX_ADC1_Init();
-  MX_USART1_UART_Init();
-  MX_TIM7_Init();
-  /* USER CODE BEGIN 2 */
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_DMA_Init();
+	MX_TIM3_Init();
+	MX_USART6_UART_Init();
+	MX_SPI2_Init();
+	MX_SPI1_Init();
+	MX_SPI3_Init();
+	MX_UART4_Init();
+	MX_UART5_Init();
+	MX_TIM5_Init();
+	MX_I2C1_Init();
+	MX_ADC1_Init();
+	MX_USART1_UART_Init();
+	MX_TIM7_Init();
+	/* USER CODE BEGIN 2 */
 
 	M8N_initialization();
 	HAL_UART_Receive_IT(&huart1, &uart1_rxData, 1);
@@ -170,20 +174,26 @@ int main(void)
 
 	HAL_TIM_Base_Start_IT(&htim7);
 
-	// pdata?�� ?��?��?���????? ???��?�� 주소
+	// pdata?�� ?��?��?���??? ???��?�� 주소
 	HAL_ADC_Start_DMA(&hadc1, &adcVal, 1);
 
-	ICM20602_Writebyte(0x13, (gyro_x_offset*-2)>>8);
-	ICM20602_Writebyte(0x14, (gyro_x_offset*-2));
+	ICM20602_Writebyte(0x13, (gyro_x_offset * -2) >> 8);
+	ICM20602_Writebyte(0x14, (gyro_x_offset * -2));
 
-	ICM20602_Writebyte(0x15, (gyro_y_offset*-2)>>8);
-	ICM20602_Writebyte(0x16, (gyro_y_offset*-2));
+	ICM20602_Writebyte(0x15, (gyro_y_offset * -2) >> 8);
+	ICM20602_Writebyte(0x16, (gyro_y_offset * -2));
 
-	ICM20602_Writebyte(0x17, (gyro_x_offset*-2)>>8);
-	ICM20602_Writebyte(0x18, (gyro_x_offset*-2));
+	ICM20602_Writebyte(0x17, (gyro_x_offset * -2) >> 8);
+	ICM20602_Writebyte(0x18, (gyro_x_offset * -2));
 
+	float kp, ki, kd;
 
-	// adcVal = ADC1->DR; ?�� 코드�????? ?��?��?�� ?��?���????? ?��?���?????�????? ?��?��.
+	for (int i = 0; i < 6; i++) {
+		EP_PIDGain_Read(0, &kp, &ki, &kd);
+		Encode_Msg_PID_Gain(&telemetry_tx_buf[0], i, kp, ki, kd);
+		HAL_UART_Transmit(&huart1, &telemetry_tx_buf[0], 20, 10);
+	}
+	// adcVal = ADC1->DR; ?�� 코드�??? ?��?��?�� ?��?���??? ?��?���???�??? ?��?��.
 
 //	while(Is_iBus_Received()==0)
 //	{
@@ -268,20 +278,49 @@ int main(void)
 
 	HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_4);
 //	printf("start\n");
-  /* USER CODE END 2 */
+	/* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
 	while (1) {
-    /* USER CODE END WHILE */
+		/* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-		if(tim7_20ms_flag == 1 && tim7_100ms_flag != 1){
+		/* USER CODE BEGIN 3 */
+
+		if (telemetry_rx_cplt_flag == 1) {
+			telemetry_rx_cplt_flag = 0;
+			if (iBus.SwA == 1000) {
+
+				unsigned char chksum = 0xff;
+				for (int i = 0; i < 19; i++)
+					chksum = chksum - telemetry_rx_buf[i];
+				if (chksum == telemetry_rx_buf[19]) {
+					switch (telemetry_rx_buf[2]) {
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+						kp = *(float*) &telemetry_rx_buf[3];
+						ki = *(float*) &telemetry_rx_buf[7];
+						kd = *(float*) &telemetry_rx_buf[11];
+						EP_PIDGain_Write(telemetry_rx_buf[2], kp, ki, kd);
+						EP_PIDGain_Read(telemetry_rx_buf[2], &kp, &ki, &kd);
+						Encode_Msg_PID_Gain(&telemetry_tx_buf[0],
+								telemetry_rx_buf[2], kp, ki, kd);
+						HAL_UART_Transmit_IT(&huart1, &telemetry_tx_buf[0], 20);
+						break;
+					}
+				}
+			}
+		}
+
+		if (tim7_20ms_flag == 1 && tim7_100ms_flag != 1) {
 			tim7_20ms_flag = 0;
 			Encode_Msg_AHRS(&telemetry_tx_buf[0]);
 			HAL_UART_Transmit_IT(&huart1, &telemetry_tx_buf[0], 20);
-		}
-		else if(tim7_20ms_flag ==1 && tim7_100ms_flag == 1){
+		} else if (tim7_20ms_flag == 1 && tim7_100ms_flag == 1) {
 			tim7_100ms_flag = 0;
 			tim7_20ms_flag = 0;
 			Encode_Msg_AHRS(&telemetry_tx_buf[0]);
@@ -310,28 +349,29 @@ int main(void)
 //			printf("%.2f,%.2f,%.2f\n", BNO080_Roll, BNO080_Pitch, BNO080_Yaw);
 		}
 
-	  if(ICM20602_DataReady()==1){
-		  ICM20602_Get3AxisGyroRawData(&ICM20602.gyro_x_raw);
+		if (ICM20602_DataReady() == 1) {
+			ICM20602_Get3AxisGyroRawData(&ICM20602.gyro_x_raw);
 
-		  ICM20602.gyro_x = ICM20602.gyro_x_raw * 2000.f / 32768.f;
-		  ICM20602.gyro_y = ICM20602.gyro_y_raw * 2000.f / 32768.f;
-		  ICM20602.gyro_z = ICM20602.gyro_z_raw * 2000.f / 32768.f;
+			ICM20602.gyro_x = ICM20602.gyro_x_raw * 2000.f / 32768.f;
+			ICM20602.gyro_y = ICM20602.gyro_y_raw * 2000.f / 32768.f;
+			ICM20602.gyro_z = ICM20602.gyro_z_raw * 2000.f / 32768.f;
 
 //		  printf("%.4f,%.4f,%.4f\n", ICM20602.gyro_x_raw, ICM20602.gyro_y_raw,ICM20602.gyro_z_raw);
-	  }
-	  if(LPS22HH_DataReady()==1){
-		  LPS22HH_GetPressure(&LPS22HH.pressure_raw);
-		  LPS22HH_GetTemperature(&LPS22HH.temperature_raw);
+		}
+		if (LPS22HH_DataReady() == 1) {
+			LPS22HH_GetPressure(&LPS22HH.pressure_raw);
+			LPS22HH_GetTemperature(&LPS22HH.temperature_raw);
 
-		  LPS22HH.baroAlt = getAltitude2(LPS22HH.pressure_raw/4096.f,LPS22HH.temperature_raw/100.f);
+			LPS22HH.baroAlt = getAltitude2(LPS22HH.pressure_raw / 4096.f,
+					LPS22HH.temperature_raw / 100.f);
 
 #define X 0.90f
 
-		  LPS22HH.baroAltFilt = LPS22HH.baroAltFilt * X + LPS22HH.baroAlt *(1.0f - X);
+			LPS22HH.baroAltFilt = LPS22HH.baroAltFilt * X
+					+ LPS22HH.baroAlt * (1.0f - X);
 
 //		  printf("%d,%d\n",(int)(LPS22HH.baroAlt*100), (int)(LPS22HH.baroAltFilt*100));
-	  }
-
+		}
 
 		if (m8n_rx_cplt_flag == 1) {
 			m8n_rx_cplt_flag = 0;
@@ -343,7 +383,6 @@ int main(void)
 //				printf("LAT: %ld\tLON: %ld\tHeight: %ld\n", posllh.lat,	posllh.lon, posllh.height);
 			}
 		}
-
 
 		if (ibus_rx_cplt_flag == 1) {
 			ibus_rx_cplt_flag = 0;
@@ -363,52 +402,49 @@ int main(void)
 //		TIM5->CCR4 = tim5_ccr4;
 //		HAL_Delay(1);
 	}
-  /* USER CODE END 3 */
+	/* USER CODE END 3 */
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-void SystemClock_Config(void)
-{
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ * @brief System Clock Configuration
+ * @retval None
+ */
+void SystemClock_Config(void) {
+	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
-  /** Configure the main internal regulator output voltage
-  */
-  __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+	/** Configure the main internal regulator output voltage
+	 */
+	__HAL_RCC_PWR_CLK_ENABLE();
+	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 168;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Initializes the RCC Oscillators according to the specified parameters
+	 * in the RCC_OscInitTypeDef structure.
+	 */
+	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	RCC_OscInitStruct.PLL.PLLM = 4;
+	RCC_OscInitStruct.PLL.PLLN = 168;
+	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+	RCC_OscInitStruct.PLL.PLLQ = 4;
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+	/** Initializes the CPU, AHB and APB buses clocks
+	 */
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+			| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK) {
+		Error_Handler();
+	}
 }
 
 /* USER CODE BEGIN 4 */
@@ -455,10 +491,34 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
 	static unsigned char cnt = 0;
 	static unsigned char cnt_ibus = 0;
-
-	if(huart->Instance == USART1){
-		HAL_UART_Transmit(&huart1, &uart1_rxData, 1, 10);
+	static unsigned char cnt_Rxdata = 0;
+	if (huart->Instance == USART1) {
+		switch (cnt_Rxdata) {
+		case 0:
+			if (uart1_rxData == 0x47) {
+				telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
+				cnt_Rxdata++;
+			}
+			break;
+		case 1:
+			if (uart1_rxData == 0x53) {
+				telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
+				cnt_Rxdata++;
+			} else
+				cnt_Rxdata = 0;
+			break;
+		case 19:
+			telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
+			cnt_Rxdata = 0;
+			telemetry_rx_cplt_flag = 1;
+		default:
+			telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
+			cnt_Rxdata++;
+			break;
+		}
 		HAL_UART_Receive_IT(&huart1, &uart1_rxData, 1);
+
+
 	}
 
 	if (huart->Instance == UART5) {
@@ -500,7 +560,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
 		HAL_UART_Receive_IT(&huart4, &uart4_rxData, 1);
 
-		//GPS�?????????? ?��?�� ?��?��받�? ?��?��?���?????????? 바로 com?���?????????? 보내�??????????기에 주석처리?��?��.
+		//GPS�???????? ?��?�� ?��?��받�? ?��?��?���???????? 바로 com?���???????? 보내�????????기에 주석처리?��?��.
 		//HAL_UART_Transmit(&huart6, &uart4_rxData, 1, 0);
 
 		switch (cnt) {
@@ -521,7 +581,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 			m8n_rx_buf[cnt] = uart4_rxData;
 			cnt = 0;
 			m8n_rx_cplt_flag = 1;
-		default: //case?�� 만족?���?????????? ?��?��?�� ?��?��?��?��.
+		default: //case?�� 만족?���???????? ?��?��?�� ?��?��?��?��.
 			m8n_rx_buf[cnt] = uart4_rxData;
 			cnt++;
 			break;
@@ -590,12 +650,14 @@ void BNO080_Calibration(void) {
 
 			//Turn the LED and buzzer on when both accuracy and sensorAccuracy is high
 			if (accuracy == 3 && sensorAccuracy == 3) {
-				HAL_GPIO_WritePin(GPIOC, LED_Blue_Pin|LED_Green_Pin|LED_Red_Pin, 1);
+				HAL_GPIO_WritePin(GPIOC,
+				LED_Blue_Pin | LED_Green_Pin | LED_Red_Pin, 1);
 				htim3.Instance->PSC = 65000; //Very low frequency
 				HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
 			} else {
-				HAL_GPIO_WritePin(GPIOC, LED_Blue_Pin|LED_Green_Pin|LED_Red_Pin, 0);
+				HAL_GPIO_WritePin(GPIOC,
+				LED_Blue_Pin | LED_Green_Pin | LED_Red_Pin, 0);
 
 				HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_4);
 			}
@@ -607,7 +669,7 @@ void BNO080_Calibration(void) {
 
 	//Ends the loop when iBus.SwC is not mid point
 	//Turn the LED and buzzer off
-	HAL_GPIO_WritePin(GPIOC, LED_Blue_Pin|LED_Green_Pin|LED_Red_Pin, 0);
+	HAL_GPIO_WritePin(GPIOC, LED_Blue_Pin | LED_Green_Pin | LED_Red_Pin, 0);
 
 	HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_4);
 
@@ -659,63 +721,65 @@ void BNO080_Calibration(void) {
 	BNO080_enableRotationVector(2500); //Send data update every 2.5ms (400Hz)
 }
 
-void Encode_Msg_AHRS(uint8_t * telemetry_tx_buf){
+void Encode_Msg_AHRS(uint8_t *telemetry_tx_buf) {
 
 	telemetry_tx_buf[0] = 0x46;
 	telemetry_tx_buf[1] = 0x43;
 
 	telemetry_tx_buf[2] = 0x10;
 
-	telemetry_tx_buf[3] = (short)(BNO080_Roll*100);
-	telemetry_tx_buf[4] = ((short)(BNO080_Roll*100))>>8;
+	telemetry_tx_buf[3] = (short) (BNO080_Roll * 100);
+	telemetry_tx_buf[4] = ((short) (BNO080_Roll * 100)) >> 8;
 
-	telemetry_tx_buf[5] = (short)(BNO080_Pitch*100);
-	telemetry_tx_buf[6] = ((short)(BNO080_Pitch*100))>>8;
+	telemetry_tx_buf[5] = (short) (BNO080_Pitch * 100);
+	telemetry_tx_buf[6] = ((short) (BNO080_Pitch * 100)) >> 8;
 
-	telemetry_tx_buf[7] = (unsigned short)(BNO080_Yaw*100);
-	telemetry_tx_buf[8] = ((unsigned short)(BNO080_Yaw*100))>>8;
+	telemetry_tx_buf[7] = (unsigned short) (BNO080_Yaw * 100);
+	telemetry_tx_buf[8] = ((unsigned short) (BNO080_Yaw * 100)) >> 8;
 
-	telemetry_tx_buf[9] = (short)(LPS22HH.baroAltFilt*10);
-	telemetry_tx_buf[10] = ((short)(LPS22HH.baroAltFilt*10))>>8;
+	telemetry_tx_buf[9] = (short) (LPS22HH.baroAltFilt * 10);
+	telemetry_tx_buf[10] = ((short) (LPS22HH.baroAltFilt * 10)) >> 8;
 
-	telemetry_tx_buf[11] = (short)((iBus.RH-1500)*0.1f*100);
-	telemetry_tx_buf[12] = ((short)((iBus.RH-1500)*0.1f*100))>>8;
+	telemetry_tx_buf[11] = (short) ((iBus.RH - 1500) * 0.1f * 100);
+	telemetry_tx_buf[12] = ((short) ((iBus.RH - 1500) * 0.1f * 100)) >> 8;
 
-	telemetry_tx_buf[13] = (short)((iBus.RV-1500)*0.1f*100);
-	telemetry_tx_buf[14] = ((short)((iBus.RV-1500)*0.1f*100))>>8;
+	telemetry_tx_buf[13] = (short) ((iBus.RV - 1500) * 0.1f * 100);
+	telemetry_tx_buf[14] = ((short) ((iBus.RV - 1500) * 0.1f * 100)) >> 8;
 
-	telemetry_tx_buf[15] = (unsigned short)((iBus.LH-1000)*0.36f*100);
-	telemetry_tx_buf[16] = ((unsigned short)((iBus.LH-1000)*0.36f*100))>>8;
+	telemetry_tx_buf[15] = (unsigned short) ((iBus.LH - 1000) * 0.36f * 100);
+	telemetry_tx_buf[16] = ((unsigned short) ((iBus.LH - 1000) * 0.36f * 100))
+			>> 8;
 
 	telemetry_tx_buf[17] = 0x00;
 	telemetry_tx_buf[18] = 0x00;
 
 	telemetry_tx_buf[19] = 0xff;
 
-	for(int i=0; i<19; i++)telemetry_tx_buf[19]= telemetry_tx_buf[19]- telemetry_tx_buf[i];
+	for (int i = 0; i < 19; i++)
+		telemetry_tx_buf[19] = telemetry_tx_buf[19] - telemetry_tx_buf[i];
 
 }
 
-void Encode_Msg_GPS(uint8_t * telemetry_tx_buf){
+void Encode_Msg_GPS(uint8_t *telemetry_tx_buf) {
 	telemetry_tx_buf[0] = 0x46;
 	telemetry_tx_buf[1] = 0x43;
 
 	telemetry_tx_buf[2] = 0x11;
 
 	telemetry_tx_buf[3] = posllh.lat;
-	telemetry_tx_buf[4] = posllh.lat>>8;
+	telemetry_tx_buf[4] = posllh.lat >> 8;
 
-	telemetry_tx_buf[5] = posllh.lat>>16;
-	telemetry_tx_buf[6] = posllh.lat>>24;
+	telemetry_tx_buf[5] = posllh.lat >> 16;
+	telemetry_tx_buf[6] = posllh.lat >> 24;
 
 	telemetry_tx_buf[7] = posllh.lon;
-	telemetry_tx_buf[8] = posllh.lon>>8;
+	telemetry_tx_buf[8] = posllh.lon >> 8;
 
-	telemetry_tx_buf[9] = posllh.lon>>16;
-	telemetry_tx_buf[10] =posllh.lon>>24;
+	telemetry_tx_buf[9] = posllh.lon >> 16;
+	telemetry_tx_buf[10] = posllh.lon >> 24;
 
-	telemetry_tx_buf[11] = (unsigned short)(batVolt*100);
-	telemetry_tx_buf[12] = ((unsigned short)(batVolt*100))>>8;
+	telemetry_tx_buf[11] = (unsigned short) (batVolt * 100);
+	telemetry_tx_buf[12] = ((unsigned short) (batVolt * 100)) >> 8;
 
 	telemetry_tx_buf[13] = iBus.SwA == 1000 ? 0 : 1;
 	telemetry_tx_buf[14] = iBus.SwC == 1000 ? 0 : iBus.SwC == 1500 ? 1 : 2;
@@ -728,59 +792,51 @@ void Encode_Msg_GPS(uint8_t * telemetry_tx_buf){
 
 	telemetry_tx_buf[19] = 0xff;
 
-	for(int i=0; i<19; i++)telemetry_tx_buf[19]= telemetry_tx_buf[19]- telemetry_tx_buf[i];
+	for (int i = 0; i < 19; i++)
+		telemetry_tx_buf[19] = telemetry_tx_buf[19] - telemetry_tx_buf[i];
 
 }
 
-void Msg_PID_Gain(uint8_t * telemetry_tx_buf, uint8_t id, float p, float i, float d){
+void Encode_Msg_PID_Gain(uint8_t *telemetry_tx_buf, uint8_t id, float p,
+		float i, float d) {
 	telemetry_tx_buf[0] = 0x46;
 	telemetry_tx_buf[1] = 0x43;
 
 	telemetry_tx_buf[2] = id;
 
-	memcpy()
-	telemetry_tx_buf[4] = posllh.lat>>8;
+//	memcpy(&telemetry_tx_buf[3], &p, 4);
+//	memcpy(&telemetry_tx_buf[7], &i, 4);
+//	memcpy(&telemetry_tx_buf[11], &d, 4);
 
-	telemetry_tx_buf[5] = posllh.lat>>16;
-	telemetry_tx_buf[6] = posllh.lat>>24;
+	*(float*) &telemetry_tx_buf[3] = p;
+	*(float*) &telemetry_tx_buf[7] = i;
+	*(float*) &telemetry_tx_buf[11] = d;
 
-	telemetry_tx_buf[7] = posllh.lon;
-	telemetry_tx_buf[8] = posllh.lon>>8;
-
-	telemetry_tx_buf[9] = posllh.lon>>16;
-	telemetry_tx_buf[10] =posllh.lon>>24;
-
-	telemetry_tx_buf[11] = (unsigned short)(batVolt*100);
-	telemetry_tx_buf[12] = ((unsigned short)(batVolt*100))>>8;
-
-	telemetry_tx_buf[13] = iBus.SwA == 1000 ? 0 : 1;
-	telemetry_tx_buf[14] = iBus.SwC == 1000 ? 0 : iBus.SwC == 1500 ? 1 : 2;
-
-	telemetry_tx_buf[15] = iBus_isActiveFailsafe(&iBus);
-
+	telemetry_tx_buf[15] = 0x00;
 	telemetry_tx_buf[16] = 0x00;
 	telemetry_tx_buf[17] = 0x00;
 	telemetry_tx_buf[18] = 0x00;
 
 	telemetry_tx_buf[19] = 0xff;
 
-	for(int i=0; i<19; i++)telemetry_tx_buf[19]= telemetry_tx_buf[19]- telemetry_tx_buf[i];
+	for (int i = 0; i < 19; i++)
+		telemetry_tx_buf[19] = telemetry_tx_buf[19] - telemetry_tx_buf[i];
 
 }
+
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
+void Error_Handler(void) {
+	/* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 	__disable_irq();
 	while (1) {
 	}
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
