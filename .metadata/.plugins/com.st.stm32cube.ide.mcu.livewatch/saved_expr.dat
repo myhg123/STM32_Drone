@@ -2,3 +2,4 @@ telemetry_tx_buf
 telemetry_rx_cplt_flag
 telemetry_rx_buf
 uart1_rxData
+iBus.SwA

@@ -42,10 +42,6 @@
 /* USER CODE BEGIN PTD */
 
 int _write(int file, char *p, int len) {
-	//기존 방식?? ??�???????? 방식?��?��?�� ?��?��?���???????? ?��번에 많�? ?��?�� 보내질때 ??�???????? 방식?? ???��?��?��?���???????? ?��?�� ?��류�? 발생?��?��.
-	//HAL_UART_Transmit(&huart6, p, len, 1);
-
-	//?��?��?��?�� 방식?�� ?��?��?��?�� ?��?��?�� 문제�???????? ?��결한?��.
 	HAL_UART_Transmit_IT(&huart6, p, len);
 	return len;
 }
@@ -80,7 +76,7 @@ float batVolt;
 
 uint8_t telemetry_tx_buf[40];
 uint8_t telemetry_rx_buf[40];
-uint8_t telemetry_rx_cplt_flag=0;
+uint8_t telemetry_rx_cplt_flag = 0;
 uint8_t tim7_20ms_flag = 0;
 uint8_t tim7_100ms_flag = 0;
 /* USER CODE END PV */
@@ -175,7 +171,7 @@ int main(void) {
 	HAL_TIM_Base_Start_IT(&htim7);
 
 	// pdata?�� ?��?��?���??? ???��?�� 주소
-	HAL_ADC_Start_DMA(&hadc1, &adcVal, 1);
+
 
 	ICM20602_Writebyte(0x13, (gyro_x_offset * -2) >> 8);
 	ICM20602_Writebyte(0x14, (gyro_x_offset * -2));
@@ -511,13 +507,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 			telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
 			cnt_Rxdata = 0;
 			telemetry_rx_cplt_flag = 1;
+			break;
 		default:
 			telemetry_rx_buf[cnt_Rxdata] = uart1_rxData;
 			cnt_Rxdata++;
 			break;
 		}
 		HAL_UART_Receive_IT(&huart1, &uart1_rxData, 1);
-
 
 	}
 
