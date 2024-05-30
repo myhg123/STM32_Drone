@@ -3,3 +3,5 @@ telemetry_rx_cplt_flag
 telemetry_rx_buf
 uart1_rxData
 iBus.SwA
+TIM5->CCR4
+TIM5->CCR3

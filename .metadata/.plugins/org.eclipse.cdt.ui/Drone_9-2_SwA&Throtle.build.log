@@ -1,0 +1,9 @@
+21:49:17 **** Incremental Build of configuration Debug for project Drone_9-2_SwA&Throtle ****
+make -j16 all 
+arm-none-eabi-size  Drone_9-2_SwA&Throtle.elf 
+c:/st/stm32cubeide_1.15.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.1.300.202402091052/tools/bin/sh: Throtle.elf: not found
+make: *** [makefile:69: default.size.stdout] Error 127
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+21:49:17 Build Failed. 1 errors, 0 warnings. (took 236ms)
+

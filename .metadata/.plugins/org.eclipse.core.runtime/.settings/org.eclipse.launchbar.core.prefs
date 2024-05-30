@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-8_PID_Gain_Requeset Debug
+configDescList=
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_2-1_BNO080\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_2-1_BNO080\ Debug/activeLaunchTarget=null\:---
@@ -51,6 +51,11 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-5_GPS_TX\ Debug/activeL
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-6_PID_gain\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-6_PID_gain\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-8_PID_Gain_Requeset\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_8-8_PID_Gain_Requeset\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_9-1_Sensor_connection_chk\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_9-1_Sensor_connection_chk\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_9-2_SwA_Throttle_Chk\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Drone_9-2_SwA_Throttle_Chk\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Z_Drone_1-1_Debug_LED\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Z_Drone_1-1_Debug_LED\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Z_Drone_1-2_Debug_Buzzer\ Debug/activeLaunchMode=run
