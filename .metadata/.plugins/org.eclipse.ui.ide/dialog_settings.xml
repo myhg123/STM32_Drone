@@ -7,6 +7,8 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\myhg1\Desktop\stm32_project\Drone_prj\STM32_Drone\Drone_9-3_Receiver_failsafe_and_connection"/>
+			<item value="C:\Users\myhg1\Desktop\stm32_project\Drone_prj\STM32_Drone\Drone_9-2_SwA_Throtle"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_9-2_SwA&amp;Throtle"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_9-1_Sensor_connection_chk"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_9-2_swa&amp;throttlechk"/>
@@ -25,8 +27,6 @@
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_2-1_BNO080"/>
 			<item value="C:\Users\kccistc\Desktop\Project\Drone_project\Drone_7-5_ICM20602_DC_Bias_remove"/>
 			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_7-4_BNO080_Calibration"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_7-5_ICM20602_DC_Bias_remove"/>
-			<item value="C:\Users\myhg1\STM32CubeIDE\Drone_project\Drone_7-3_Battery_Check"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

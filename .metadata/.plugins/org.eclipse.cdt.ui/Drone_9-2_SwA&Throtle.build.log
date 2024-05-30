@@ -1,9 +1,17 @@
-21:49:17 **** Incremental Build of configuration Debug for project Drone_9-2_SwA&Throtle ****
-make -j16 all 
+00:38:00 **** Incremental Build of configuration Debug for project Drone_9-2_SwA&Throtle ****
+make -j6 all 
+arm-none-eabi-gcc -o "Drone_9-2_SwA&Throtle.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\myhg1\Desktop\stm32_project\Drone_prj\STM32_Drone\Drone_9-2_SwA&Throtle\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drone_9-2_SwA&Throtle.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.15.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Drone_9-2_SwA&Throtle.elf has a LOAD segment with RWX permissions
+Finished building target: Drone_9-2_SwA&Throtle.elf
+ 
 arm-none-eabi-size  Drone_9-2_SwA&Throtle.elf 
-c:/st/stm32cubeide_1.15.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.1.300.202402091052/tools/bin/sh: Throtle.elf: not found
+arm-none-eabi-objdump -h -S Drone_9-2_SwA&Throtle.elf  > "Drone_9-2_SwA&Throtle.list"
+c:/st/stm32cubeide_1.15.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.1.300.202402091052/tools/bin/sh: Throtle.elf: not found
 make: *** [makefile:69: default.size.stdout] Error 127
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
+make: *** Waiting for unfinished jobs....
+c:/st/stm32cubeide_1.15.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.make.win32_2.1.300.202402091052/tools/bin/sh: Throtle.elf: not found
+make: *** [makefile:74: Drone_9-2_SwA&Throtle.list] Error 127
+"make -j6 all" terminated with exit code 2. Build might be incomplete.
 
-21:49:17 Build Failed. 1 errors, 0 warnings. (took 236ms)
+00:38:01 Build Failed. 3 errors, 1 warnings. (took 617ms)
 

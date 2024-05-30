@@ -1,0 +1,12 @@
+../Core/Src/main.c:44:5:_write	1
+../Core/Src/main.c:131:5:main	52
+../Core/Src/main.c:731:6:SystemClock_Config	3
+../Core/Src/main.c:770:5:Is_iBus_Throttle_Min	4
+../Core/Src/main.c:783:6:ESC_Calibration	1
+../Core/Src/main.c:797:5:Is_iBus_Received	3
+../Core/Src/main.c:809:6:HAL_UART_RxCpltCallback	23
+../Core/Src/main.c:916:6:BNO080_Calibration	17
+../Core/Src/main.c:1043:6:Encode_Msg_AHRS	2
+../Core/Src/main.c:1082:6:Encode_Msg_GPS	4
+../Core/Src/main.c:1119:6:Encode_Msg_PID_Gain	2
+../Core/Src/main.c:1152:6:Error_Handler	1
